@@ -21,6 +21,7 @@ import (
 func UploadAvatar(ctx context.Context, u *user_model.User, data []byte) error {
 	avatarData, err := avatar.ProcessAvatarImage(data)
 	if err != nil {
+		log.Info("Failed to process avatar for %s: %s", u.Name, err)
 		return err
 	}
 
